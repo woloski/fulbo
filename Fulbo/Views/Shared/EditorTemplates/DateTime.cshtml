@@ -1,0 +1,12 @@
+﻿@model DateTime?
+@Html.TextBox("", Model.HasValue ? Model.Value.ToString("dd/MM/yyyy") : "",
+                  new { @class = "date" })
+   
+   <script type="text/javascript">
+/// <reference path="jquery-1.4.4.js" />
+/// <reference path="jquery-ui.js" />
+$(document).ready(function () {
+    $('.date').datepicker({dateFormat: "mm/dd/yy"});
+}); 
+
+</script>

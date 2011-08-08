@@ -1,0 +1,61 @@
+@model Fulbo.Models.Match
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.HomeScore)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.HomeScore)
+    @Html.ValidationMessageFor(model => model.HomeScore)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.AwayScore)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.AwayScore)
+    @Html.ValidationMessageFor(model => model.AwayScore)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Date)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Date)
+    @Html.ValidationMessageFor(model => model.Date)
+</div>
+
+<div class="editor-label">
+    HomeTeam
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.HomeTeamId, ((IEnumerable<Fulbo.Models.Team>)ViewBag.PossibleHomeTeams).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Name), 
+        Value = option.Id.ToString(),
+        Selected = (Model != null) && (option.Id == Model.HomeTeamId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.HomeTeamId)
+</div>
+<div class="editor-label">
+    AwayTeam
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.AwayTeamId, ((IEnumerable<Fulbo.Models.Team>)ViewBag.PossibleAwayTeams).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Name), 
+        Value = option.Id.ToString(),
+        Selected = (Model != null) && (option.Id == Model.AwayTeamId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.AwayTeamId)
+</div>
+<div class="editor-label">
+    Fixture
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.FixtureId, ((IEnumerable<Fulbo.Models.Fixture>)ViewBag.PossibleFixtures).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.Id.ToString(),
+        Selected = (Model != null) && (option.Id == Model.FixtureId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.FixtureId)
+</div>

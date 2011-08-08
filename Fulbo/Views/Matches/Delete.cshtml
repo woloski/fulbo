@@ -1,0 +1,38 @@
+@model Fulbo.Models.Match
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Match</legend>
+
+    <div class="display-label">HomeTeam</div>
+    <div class="display-field">@(Model.HomeTeam == null ? "None" : Model.HomeTeam.Name)</div>
+
+    <div class="display-label">AwayTeam</div>
+    <div class="display-field">@(Model.AwayTeam == null ? "None" : Model.AwayTeam.Name)</div>
+
+    <div class="display-label">HomeScore</div>
+    <div class="display-field">@Model.HomeScore</div>
+
+    <div class="display-label">AwayScore</div>
+    <div class="display-field">@Model.AwayScore</div>
+
+    <div class="display-label">Date</div>
+    <div class="display-field">@String.Format("{0:g}", Model.Date)</div>
+
+    <div class="display-label">Fixture</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.Fixture).ToString()</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

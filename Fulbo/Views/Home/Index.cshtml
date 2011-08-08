@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Fulbo.Models.Match>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Fixture</h2>
+<div id="fixture">
+<table>
+@if (Model.Count() == 0)
+{
+    <p>No matches. @Html.ActionLink("Create some", "Create", "Matches")</p>
+}
+@foreach (var match in Model)
+{
+    <tr>
+        <td>@match.HomeTeam.Name</td>
+        <td>@match.HomeScore</td>
+        <td>vs.</td>
+        <td>@match.AwayTeam.Name</td>
+        <td>@match.AwayScore</td>        
+    </tr>
+}
+</table>
+</div>

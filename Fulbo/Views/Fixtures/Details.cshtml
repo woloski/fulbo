@@ -1,0 +1,26 @@
+@model Fulbo.Models.Fixture
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Fixture</legend>
+
+    <div class="display-label">Number</div>
+    <div class="display-field">@Model.Number</div>
+
+    <div class="display-label">Season</div>
+    <div class="display-field">@Model.Season</div>
+
+    <div class="display-label">Matches</div>
+    <div class="display-field">@(Model.Matches == null ? "None" : Model.Matches.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
